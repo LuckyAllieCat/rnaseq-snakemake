@@ -1,0 +1,20 @@
+# Sample sheet: one row per sample, `run` is an SRA/ENA run accession (paired-end).
+samples: config/samples.tsv
+
+# Read pairs kept per sample. The first N pairs are streamed from ENA,
+# so the full multi-GB FASTQs are never downloaded.
+subsample_reads: 2000000
+
+reference:
+  # GENCODE human transcriptome; headers are parsed to build tx2gene.
+  transcriptome_url: https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_44/gencode.v44.transcripts.fa.gz
+
+deseq2:
+  design: "~ cell_line + condition"
+  # [factor, numerator level, denominator level]
+  contrast: [condition, dex, untreated]
+  alpha: 0.05
+
+enrichment:
+  padj_cutoff: 0.05
+  lfc_cutoff: 1

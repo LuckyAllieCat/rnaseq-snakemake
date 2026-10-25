@@ -1,0 +1,17 @@
+configfile: "config/config.yaml"
+
+
+include: "rules/common.smk"
+include: "rules/download.smk"
+include: "rules/reference.smk"
+include: "rules/qc.smk"
+include: "rules/quant.smk"
+include: "rules/de.smk"
+
+
+rule all:
+    input:
+        "results/qc/multiqc_report.html",
+        "results/deseq2/deseq2_results.tsv",
+        "results/enrichment/go_bp_ora.tsv",
+        "results/enrichment/hallmark_gsea.tsv",

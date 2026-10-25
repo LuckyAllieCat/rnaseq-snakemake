@@ -1,0 +1,10 @@
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - r-base>=4.3
+  - bioconductor-clusterprofiler
+  - bioconductor-org.hs.eg.db
+  - r-msigdbr
+  - r-ggplot2

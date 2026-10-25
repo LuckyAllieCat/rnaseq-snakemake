@@ -1,0 +1,15 @@
+name: dry-run
+
+on: [push, pull_request]
+
+jobs:
+  dryrun:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "snakemake>=8,<9"
+      - name: Check the DAG builds
+        run: snakemake -n --cores 1 --workflow-profile none
